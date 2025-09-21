@@ -8,7 +8,8 @@ const ProductCard = ({ product, openModal }) =>
 
     return (
         <div className="product-card" onClick={() => openModal(product)}> {/* Ejecutando openModal al hacer clic */}
-            <img src={product.imageUrl} alt={product.title} />
+            {/* <img src={product.imageUrl} alt={product.title} / > * /} {/ * comento para poder publicar en git con la ruta */}
+            <img src={`${import.meta.env.BASE_URL}${product.imageUrl}`} alt={product.title} />
             <h3>{product.title}</h3>
             <h4>{product.autor}</h4>
             <p>{product.description}</p>

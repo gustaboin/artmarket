@@ -4,7 +4,7 @@ const products = [
         title: 'Rostro de Mujer',
         autor: "Tsukiko-Kiyomidzu",
         description: 'Pintura Abstracta',
-        imageUrl: '../src/assets/images/1.png',
+        imageUrl: 'images/1.png',
         price: 300
     },
 
@@ -13,7 +13,7 @@ const products = [
         title: 'Naturaleza Muerta',
         autor: "Jill Wellington",
         description: 'Descripción breve',
-        imageUrl: '../src/assets/images/2.png',
+        imageUrl: 'images/2.png',
         price: 500
     },
 
@@ -22,7 +22,7 @@ const products = [
         title: 'Cat al óleo',
         autor: "Bianca Van Dijk",
         description: 'Descripción breve',
-        imageUrl: '../src/assets/images/cat.png',
+        imageUrl: 'images/cat.png',
         price: 450
     },
 
@@ -31,7 +31,7 @@ const products = [
         title: 'Doggy',
         autor: "John Doe",
         description: 'Descripción breve',
-        imageUrl: '../src/assets/images/Dog.png',
+        imageUrl: 'images/Dog.png',
         price: 600
     },
 
@@ -40,7 +40,7 @@ const products = [
         title: 'Landscape',
         autor: "Jane Smith",
         description: 'Descripción breve',
-        imageUrl: '../src/assets/images/landscape.png',
+        imageUrl: 'images/landscape.png',
         price: 700
     },
 
@@ -49,7 +49,7 @@ const products = [
         title: 'Isabel Adjani',
         autor: "Fotograma Anonimo",
         description: 'Possession: Filme de Terror Piscologico del Director Polaco Andrzej Zulawski',
-        imageUrl: '../src/assets/images/possession.png',
+        imageUrl: 'images/possession.png',
         price: 800
     },
 
@@ -58,7 +58,7 @@ const products = [
         title: 'Foxy',
         autor: "Michael Brown",
         description: 'Descripción breve',
-        imageUrl: '../src/assets/images/fox.png',
+        imageUrl: 'images/fox.png',
         price: 900
     },
     {
@@ -66,7 +66,7 @@ const products = [
         title: 'Ewe and Me Drawing',
         autor: "Soo Beng Lim",
         description: 'Australian Sheep drawing',
-        imageUrl: '../src/assets/images/sheep.png',
+        imageUrl: 'images/sheep.png',
         price: 450
     }
 
