@@ -252,7 +252,7 @@ footer {
 /* Estilo de la imagen dentro del modal */
 .modal-image {
   width: 100%;
-  max-height: 400px;
+  max-height: 300px;
   object-fit: contain;
   /* Hace que la imagen se ajuste bien al contenedor */
   margin-bottom: 20px;

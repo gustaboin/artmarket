@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 
+
 const Home = () =>
 {
     const [products, setProducts] = useState([]);
@@ -72,10 +73,13 @@ const Home = () =>
             >
                 {selectedProduct && (
                     <>
-                        <h2>{selectedProduct.name}</h2>
+                        <h2>{selectedProduct.title} </h2>
                         <p>{selectedProduct.description}</p>
-                        <button onClick={closeModal}>Cerrar</button>
-                        <button onClick={goToProductDetail}>Ver detalles</button>
+                        <img className='modal-image' src={`${import.meta.env.BASE_URL}public/${selectedProduct.imageUrl}`} alt={selectedProduct.title} />
+
+                        <button className='modal-body button' onClick={closeModal}>Cerrar</button>
+
+                        <button className='modal-body button' onClick={goToProductDetail}>Ver detalles</button>
                     </>
                 )}
             </Modal>
