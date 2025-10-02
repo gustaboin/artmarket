@@ -31,7 +31,7 @@ const ProductDetail = () =>
 
     return (
         <div className="product-detail">
-            <img src={product.imageUrl} alt={product.title} />
+            <img style={{ maxWidth: '300px' }} src={`${import.meta.env.BASE_URL}${product.imageUrl}`} alt={product.title} />
             <h2>{product.title}</h2>
             <p><strong>Artista:</strong> {product.artist}</p>
             <p>{product.description}</p>

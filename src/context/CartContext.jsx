@@ -1,15 +1,22 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 
 const CartContext = createContext();
-export const useCart = () => useContext(CartContext);
+
 
 export const CartProvider = ({ children }) =>
 {
     // ⬇ Cargar desde localStorage si existe, o array vacío
     const [cartItems, setCartItems] = useState(() =>
     {
-        const stored = localStorage.getItem("cart");
-        return stored ? JSON.parse(stored) : [];
+        try // agrego try catch por si surge un error al parsear el JSON
+        {
+            const stored = localStorage.getItem("cart");
+            return stored ? JSON.parse(stored) : [];
+        } catch (error)
+        {
+            console.error("Error al cargar el carrito desde localStorage:", error);
+            return [];
+        }
     });
 
 
@@ -18,7 +25,7 @@ export const CartProvider = ({ children }) =>
         localStorage.setItem("cart", JSON.stringify(cartItems));
     }, [cartItems]);
 
-    const addToCart = (product) =>
+    const addToCart = (product, qty = 1) => // qty para agregar multiples antes tenia hardcodeado 1
     {
         setCartItems(prev =>
         {
@@ -27,19 +34,47 @@ export const CartProvider = ({ children }) =>
             {
                 return prev.map(item =>
                     item.id === product.id
-                        ? { ...item, quantity: item.quantity + 1 }
+                        ? { ...item, quantity: item.quantity + qty }
                         : item
                 );
             } else
             {
-                return [...prev, { ...product, quantity: 1 }];
+                return [...prev, { ...product, quantity: qty }];
             }
         });
     };
 
-    const removeFromCart = (id) =>
+    // funcion para eliminar unidad del carrito
+    const decreaseQuantity = (productId) =>
     {
-        setCartItems(prev => prev.filter(item => item.id !== id));
+        setCartItems((prev) =>
+        {
+            const found = prev.find((p) => p.id === productId);
+            if (!found) return prev;
+            if (found.quantity <= 1)
+            {
+                // quitar el item si se reduce a 0
+                return prev.filter((p) => p.id !== productId);
+            } else
+            {
+                return prev.map((p) => p.id === productId ? { ...p, quantity: p.quantity - 1 } : p);
+            }
+        });
+    };
+
+    const setItemQuantity = (productId, qty) =>
+    {
+        if (qty <= 0)
+        {
+            removeItem(productId);
+            return;
+        }
+        setCartItems((prev) => prev.map((p) => p.id === productId ? { ...p, quantity: qty } : p));
+    };
+
+    const removeItem = (productId) =>
+    {
+        setCartItems((prev) => prev.filter((p) => p.id !== productId));
     };
 
     const clearCart = () =>
@@ -47,16 +82,26 @@ export const CartProvider = ({ children }) =>
         setCartItems([]);
     };
 
+    const total = cartItems.reduce((acc, it) => acc + it.price * (it.quantity || 0), 0);
+
     return (
         <CartContext.Provider
             value={{
                 cartItems,
                 addToCart,
-                removeFromCart,
+                decreaseQuantity,
                 clearCart,
+                setItemQuantity,
+                removeItem,
+                total
             }}
         >
             {children}
         </CartContext.Provider>
     );
+};
+
+export const useCart = () =>
+{
+    return useContext(CartContext);
 };

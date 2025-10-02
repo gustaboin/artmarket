@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard';
 import Loader from '../components/Loader';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 
 const Home = () =>
@@ -14,7 +15,9 @@ const Home = () =>
     /** Modal State */
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const history = useNavigate();
+    // const history = useNavigate(); cambio esta linea porque me genera error en navigate
+    const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     useEffect(() =>
     {
@@ -43,10 +46,22 @@ const Home = () =>
     {
         if (selectedProduct)
         {
-            history.push(`/product/${selectedProduct.id}`);
+            //history.push(`/product/${selectedProduct.id}`);
+            navigate(`/product/${selectedProduct.id}`);
             closeModal();
         }
     };
+
+    const addFromModal = (e) =>
+    {
+        e.stopPropagation();
+        if (selectedProduct)
+        {
+            addToCart(selectedProduct);
+
+            // closeModal(); // Decido no cerrar el modal al agregar al carrito, o tengo que implentar un desvanecimiento
+        }
+    }
 
     if (loading) return <Loader />;
 
@@ -75,15 +90,20 @@ const Home = () =>
                     <>
                         <h2>{selectedProduct.title} </h2>
                         <p>{selectedProduct.description}</p>
-                        <img className='modal-image' src={`${import.meta.env.BASE_URL}public/${selectedProduct.imageUrl}`} alt={selectedProduct.title} />
-
-                        <button className='modal-body button' onClick={closeModal}>Cerrar</button>
-
-                        <button className='modal-body button' onClick={goToProductDetail}>Ver detalles</button>
+                        <img className='modal-image' src={`${import.meta.env.BASE_URL}${selectedProduct.imageUrl}`} alt={selectedProduct.title} />
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', alignItems: 'center', marginBottom: '1rem' }}>
+                            <button className="btn btn-success" onClick={addFromModal}>
+                                Agregar al carrito
+                            </button>
+                            <button className="btn btn-primary" onClick={() => goToProductDetail()}>
+                                Detalles
+                            </button>
+                            <button className='btn btn-danger' onClick={closeModal}>Cerrar</button>
+                        </div>
                     </>
                 )}
             </Modal>
-        </div>
+        </div >
     );
 };
 

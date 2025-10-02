@@ -300,44 +300,6 @@ footer {
 }
 
 
-/* Cart */
-.cart {
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.cart h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.cart div {
-  margin-bottom: 1rem;
-}
-
-.cart h3 {
-  font-size: 1.1rem;
-  margin: 0.3rem 0;
-}
-
-.cart button {
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.cart button:hover {
-  background-color: #005fa3;
-}
-
 /* Artist Profile */
 .artist-profile {
   padding: 2rem;
@@ -370,4 +332,167 @@ footer {
 .artist-profile .gallery img {
   width: 100%;
   border-radius: 10px;
+}
+
+/* Responsive Styles */
+
+
+/* General breakpoints */
+@media (max-width: 1024px) {
+  .home {
+    padding: 1.25rem;
+  }
+
+  .products-grid {
+    gap: 1.25rem;
+  }
+
+  .product-card {
+    padding: 0.9rem;
+  }
+
+  .product-card h3 {
+    font-size: 1.05rem;
+  }
+
+  nav {
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  nav .links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  nav .links a {
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Product card compact */
+  .product-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.8rem;
+    align-items: start;
+  }
+
+  .product-card img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    margin-bottom: 0;
+    border-radius: 6px;
+  }
+
+  .product-card h3 {
+    font-size: 1rem;
+  }
+
+  .product-card p {
+    font-size: 0.85rem;
+    color: #666;
+  }
+
+  .product-card .view-more,
+  .product-card .add-to-cart {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.7rem;
+  }
+
+
+  .product-detail {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .product-detail img {
+    max-height: 260px;
+  }
+
+  /* Modal */
+  .modal-content {
+    width: 95%;
+    max-width: 680px;
+    padding: 1rem;
+  }
+
+  .modal-image {
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+
+
+  /* Artist profile gallery */
+  .artist-profile .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Buttons (reutilizables) */
+.btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .12s ease;
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.btn-primary {
+  background: #1e90ff;
+  color: white;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+/* Modal actions area */
+.modal-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Small qty buttons */
+.qty-controls {
+  display: inline-flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.qty-controls button {
+  padding: 0.25rem 0.6rem;
 }

@@ -1,0 +1,33 @@
+.checkout {
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.checkout-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+.checkout-form input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 0.3rem;
+}
+
+.order-summary {
+    margin-bottom: 1.5rem;
+}
+
+.error {
+    color: red;
+    font-size: 0.8rem;
+}
