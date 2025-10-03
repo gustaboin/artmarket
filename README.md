@@ -1,12 +1,69 @@
-# React + Vite
+# 🎨 Arte Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un **marketplace de arte digital** hecho en **React**.  
+Permite explorar obras destacadas, ver detalles en un **modal** o página dedicada, agregar productos a un **carrito de compras** y finalizar con un **checkout** (simulado).
 
-Currently, two official plugins are available:
+![Vista previa](public/images/home.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Características
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 📌 **Listado de obras** con diseño moderno y responsivo.
+
+- 🖼️ **Modal rápido** con descripción, imagen y botón de compra.
+
+![Vista previa](public/images/modal.png)
+
+- 🔍 **Página de detalle** para cada obra.
+
+- 🛒 **Carrito de compras**:
+  - Agregar y eliminar productos.
+  - Control de cantidades (+ / -).
+  - Subtotales y total dinámico.
+  - Persistencia en `localStorage`.
+
+![vista previa](public/images/cart.png)
+
+- 💳 **Checkout simulado**:
+  - Formulario con validaciones realistas.
+  - Limpieza del carrito al completar la compra.
+
+![vista previa](public/images/pagar.png)
+
+- 📱 **Responsive design**: adaptado a mobile y desktop.
+
+![Vista previa](public/images/mobile.png)
+
+- 🎚️ **Carrusel de productos** con navegación lateral.
+
+---
+
+## 🚀 Tecnologías utilizadas
+
+- [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/) para la navegación
+- Context API para el **estado global del carrito**
+- [React Modal](https://www.npmjs.com/package/react-modal) para el popup de producto
+- CSS puro con **media queries** para mobile-ready
+
+---
+
+## 📂 Estructura del proyecto
+
+![Vista previa](public/images/estructura.png)
+
+## 📦 Instalación y uso
+
+Cloná este repo:
+
+```bash
+git clone https://github.com/tuusuario/art-marketplace.git
+cd art-marketplace
+
+npm install
+
+npm run dev
+
+Abrí en tu navegador >> http://localhost:5173
+```
