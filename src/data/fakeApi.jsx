@@ -5,7 +5,8 @@ const products = [
         autor: "Tsukiko-Kiyomidzu",
         description: 'Pintura Abstracta',
         imageUrl: 'images/1.png',
-        price: 300
+        price: 300,
+        stock: 3
     },
 
     {
@@ -14,7 +15,8 @@ const products = [
         autor: "Jill Wellington",
         description: 'Descripción breve',
         imageUrl: 'images/2.png',
-        price: 500
+        price: 500,
+        stock: 2
     },
 
     {
@@ -23,7 +25,8 @@ const products = [
         autor: "Bianca Van Dijk",
         description: 'Descripción breve',
         imageUrl: 'images/cat.png',
-        price: 450
+        price: 450,
+        stock: 10
     },
 
     {
@@ -32,7 +35,8 @@ const products = [
         autor: "John Doe",
         description: 'Descripción breve',
         imageUrl: 'images/Dog.png',
-        price: 600
+        price: 600,
+        stock: 8
     },
 
     {
@@ -41,16 +45,18 @@ const products = [
         autor: "Jane Smith",
         description: 'Descripción breve',
         imageUrl: 'images/landscape.png',
-        price: 700
+        price: 700,
+        stock: 12
     },
 
     {
         id: 6,
-        title: 'Isabel Adjani',
-        autor: "Fotograma Anonimo",
-        description: 'Possession: Filme de Terror Piscologico del Director Polaco Andrzej Zulawski',
-        imageUrl: 'images/possession.png',
-        price: 800
+        title: 'Shadows',
+        autor: "Pintura Anónima",
+        description: '',
+        imageUrl: 'images/shadows.png',
+        price: 800,
+        stock: 1
     },
 
     {
@@ -59,7 +65,8 @@ const products = [
         autor: "Michael Brown",
         description: 'Descripción breve',
         imageUrl: 'images/fox.png',
-        price: 900
+        price: 900,
+        stock: 3
     },
     {
         id: 8,
@@ -67,7 +74,8 @@ const products = [
         autor: "Soo Beng Lim",
         description: 'Australian Sheep drawing',
         imageUrl: 'images/sheep.png',
-        price: 450
+        price: 450,
+        stock: 6
     }
 
 ]
@@ -101,8 +109,8 @@ export function fetchProductById(id)
 {
     return new Promise((resolve, reject) =>
     {
-        console.log("🆔 Buscando producto con id:", id);
-        console.log("📦 IDs disponibles:", products.map(p => p.id));
+        console.log("Buscando producto con id:", id);
+        console.log("IDs disponibles:", products.map(p => p.id));
         const product = products.find(p => p.id === Number(id));
         setTimeout(() =>
         {

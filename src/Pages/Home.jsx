@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 
+
 const Home = () =>
 {
     const [products, setProducts] = useState([]);
@@ -18,6 +19,29 @@ const Home = () =>
     // const history = useNavigate(); cambio esta linea porque me genera error en navigate
     const navigate = useNavigate();
     const { addToCart } = useCart();
+
+
+    // agrego un index 02-10-2025 para poder hacer mejor la navegabilidad con botones next y prev
+    const [startIndex, setStartIndex] = useState(0);
+    const itemsPerPage = 4;
+
+    const visibleProducts = products.slice(startIndex, startIndex + itemsPerPage);
+
+    const next = () =>
+    {
+        if (startIndex + itemsPerPage < products.length)
+        {
+            setStartIndex(startIndex + itemsPerPage);
+        }
+    };
+
+    const prev = () =>
+    {
+        if (startIndex - itemsPerPage >= 0)
+        {
+            setStartIndex(startIndex - itemsPerPage);
+        }
+    };
 
     useEffect(() =>
     {
@@ -69,12 +93,16 @@ const Home = () =>
         <div className="home">
             <h1>Obras destacadas</h1>
             <div className="products-grid">
-                {products.map((product) => (
+                {visibleProducts.map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}
                         openModal={() => openModal(product)} />
                 ))}
+            </div>
+            <div className="slider-controls">
+                <button onClick={prev} disabled={startIndex === 0}>⬅️</button>
+                <button onClick={next} disabled={startIndex + itemsPerPage >= products.length}>➡️</button>
             </div>
 
             {/* Modal */}

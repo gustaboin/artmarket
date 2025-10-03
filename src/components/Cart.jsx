@@ -2,6 +2,7 @@ import React from 'react';
 import { useCart } from '../context/CartContext';
 import './../styles/Cart.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const Cart = () =>
@@ -10,8 +11,15 @@ const Cart = () =>
     const { cartItems, removeItem, clearCart, addToCart, decreaseQuantity, total } = useCart();
     const navigate = useNavigate();
 
-    if (cartItems.length === 0) return <p>Tu carrito está vacío.</p>;
-
+    if (cartItems.length === 0)
+    {
+        return (<div className="cart"><p><h2>Tu carrito está vacío.</h2> </p>
+            <img className="img" src={`${import.meta.env.BASE_URL}${'/images/vacio.png'}`} alt="carrito vacio" />
+            <Link to="/" className="btn btn-primary">
+                Seguir navegando!
+            </Link>
+        </div >);
+    }
     return (
         <div className="cart">
             <h2>Carrito</h2>

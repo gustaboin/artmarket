@@ -45,7 +45,7 @@ const Checkout = () =>
         e.preventDefault();
         if (!validate()) return;
 
-        // Simulación de procesamiento
+        // Simulación de procesamiento tengo que cambiar el alert feo este por una tarjeta
         setTimeout(() =>
         {
             alert("Pago procesado con éxito. ¡Gracias por tu compra!");

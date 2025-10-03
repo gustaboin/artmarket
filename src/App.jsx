@@ -13,7 +13,7 @@ function App()
   return (
     <Router> {/*  basename="/artmarket" si se publica en github pages */}
       <Navbar />
-      <main style={{ padding: '2rem' }}>
+      <main style={{ padding: '0.5rem', minHeight: '80vh', }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
