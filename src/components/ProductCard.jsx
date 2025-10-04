@@ -14,7 +14,7 @@ const ProductCard = ({ product, openModal }) =>
                 <h3>{product.title}</h3>
                 <h4>{product.autor}</h4>
                 <p>{product.description.substring(0, 50) + "..."}</p>
-                <p class="precio">Precio unitario: ${product.price}</p>
+                <p class="precio">Precio unitario: u$s {product.price}</p>
             </div>
             <div className="product-actions">
                 <Link className="btn btn-secondary" to={`/product/${product.id}`}>Ver más</Link>

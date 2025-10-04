@@ -13,7 +13,7 @@ const Cart = () =>
 
     if (cartItems.length === 0)
     {
-        return (<div className="cart" style={{ backgroundColor: 'rgba(241,193,193,1)', }}><h2>Tu carrito está vacío.</h2>
+        return (<div className="cart" style={{ backgroundColor: 'rgba(241,193,193,1)', marginTop: '20px', }}><h2>Tu carrito está vacío.</h2>
             <img className="img" src={`${import.meta.env.BASE_URL}${'/images/vacio.png'}`} alt="carrito vacio" />
             <Link to="/" className="btn btn-primary">
                 Seguir navegando!
@@ -27,10 +27,11 @@ const Cart = () =>
                 <div className='item-key' key={item.id}>
                     <img className="img" src={`${import.meta.env.BASE_URL}${item.imageUrl}`} alt={item.title} />
                     <h3>{item.title}</h3>
-                    <p>Cantidad: {item.quantity}</p>
+                    {/*<p>Cantidad: {item.quantity}</p>*/}
                     <p>Precio unitario: ${item.price}</p>
 
                     <div className="qty-controls">
+                        <p>Cantidad: </p>
                         <button className="btn btn-primary" onClick={() => decreaseQuantity(item.id)}>-</button>
                         <span style={{ padding: '0 0.6rem', fontWeight: 700 }}>{item.quantity}</span>
                         <button className="btn btn-primary" onClick={() => addToCart(item, 1)}>+</button>
@@ -39,7 +40,7 @@ const Cart = () =>
                 </div>
             ))}
             <hr />
-            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', marginTop: '1rem', }}>
                 <p style={{ fontSize: '30px' }}><strong>Total:</strong> ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</p>
 
                 <button className="btn btn-success" onClick={() => navigate('/Checkout')}>Proceder a Pago</button>

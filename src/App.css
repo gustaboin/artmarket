@@ -215,6 +215,7 @@ footer {
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  margin-top: 20px;
   background-color: #f1c1c1;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -232,7 +233,8 @@ footer {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+
+  justify-content: space-between;
 }
 
 .product-detail h2 {
@@ -243,6 +245,7 @@ footer {
 .product-detail p {
   font-size: 1rem;
   margin-bottom: 1rem;
+  text-align: justify;
 }
 
 .product-detail button {
@@ -253,6 +256,8 @@ footer {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  align-self: center;
+  margin-bottom: 2rem;
 }
 
 .product-detail button:hover {
