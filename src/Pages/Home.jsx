@@ -101,8 +101,8 @@ const Home = () =>
                 ))}
             </div>
             <div className="slider-controls">
-                <button onClick={prev} disabled={startIndex === 0}>⬅️</button>
-                <button onClick={next} disabled={startIndex + itemsPerPage >= products.length}>➡️</button>
+                <button onClick={prev} disabled={startIndex === 0}>◄</button>
+                <button onClick={next} disabled={startIndex + itemsPerPage >= products.length}>►</button>
             </div>
 
             {/* Modal */}

@@ -7,15 +7,16 @@
 }
 
 body {
-  background-color: #f7f7f7;
-  color: #333;
-  line-height: 1.6;
+  /*background-color: #f7f7f7;*/
+  background-color: #607d8b;
+  color: #0b3763;
+  /*  line-height: 1.6;*/
   height: 100%;
 }
 
 /* Navbar */
 nav {
-  background-color: #ffffff;
+  background-color: #82bad5;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -32,16 +33,30 @@ nav .logo {
   margin-left: 100px;
 }
 
+nav .logo:hover {
+  color: #041014;
+  transform: scale(1.2);
+}
+
 nav .links a {
+  color: #041014;
   margin-left: 1rem;
   text-decoration: none;
-  color: #555;
-  transition: color 0.2s ease-in-out;
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  /*transition: color 0.2s ease-in-out;*/
+  transition: color 0.3s ease, border-bottom 0.3s ease-in-out;
   padding: 20px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
 }
 
 nav .links a:hover {
-  color: #000;
+  color: #1e90ff;
+  transform: scale(1.1);
 }
 
 .wrapper {
@@ -53,19 +68,19 @@ nav .links a:hover {
 .cart-icon {
   position: relative;
   display: inline-block;
-  color: #333;
 }
 
 .cart-count {
   position: absolute;
-  /*  top: -8px;
+  /*top: -6px;
   right: -10px;*/
-  background-color: crimson;
+  background: red;
   color: white;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: bold;
   border-radius: 50%;
   padding: 2px 6px;
+  line-height: 1;
 }
 
 @keyframes bounce {
@@ -100,10 +115,10 @@ footer {
   /*margin-top: 3rem; quito el margin */
   padding: 1.5rem;
   text-align: center;
-  background-color: #fff;
-  color: #777;
+  background-color: #82bad5;
+  color: #041014;
   font-size: 0.9rem;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #0b3763;
 }
 
 
@@ -115,7 +130,7 @@ footer {
 }
 
 .home h1 {
-  margin-bottom: 2rem;
+
   text-align: center;
   font-size: 2rem;
 }
@@ -128,11 +143,26 @@ footer {
 
 /* Product Card */
 .product-card {
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1c1c1;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
+  height: 100%;
+}
+
+/*** agrego esto para envolver todo el contenido de la tarjet menos lo botones */
+.product-content {
+  flex-grow: 1;
+}
+
+.product-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .product-card:hover {
@@ -160,22 +190,32 @@ footer {
 
 .product-card a {
   text-decoration: none;
-  color: #0077cc;
+  color: #fff;
+  background-color: #007BFF;
   font-weight: bold;
   margin: 1rem;
 
 }
 
 .product-card a:hover {
-  text-decoration: underline;
+  background-color: #2E93FF;
 }
+
+.precio {
+  color: #0d0d0e !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+}
+
 
 /* Product Detail */
 .product-detail {
+  display: flex;
+  gap: 2rem;
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #f1c1c1;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -186,6 +226,13 @@ footer {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1.5rem;
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .product-detail h2 {
@@ -216,9 +263,9 @@ footer {
 .add-to-cart {
   display: inline-block;
   margin: 1rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  background-color: #333;
+  padding: 0.5rem 0.9rem;
+  font-weight: bold;
+  background-color: #28A745;
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -226,7 +273,7 @@ footer {
 }
 
 .add-to-cart:hover {
-  background-color: #555;
+  background-color: #32CD56;
 }
 
 /*modal*/
@@ -249,7 +296,7 @@ footer {
 
 /* Contenido del modal */
 .modal-content {
-  background-color: white;
+  background-color: #A7AAE1;
   border-radius: 10px;
   padding: 20px;
   max-width: 800px;
@@ -385,6 +432,11 @@ footer {
     flex-wrap: wrap;
   }
 
+  nav .links a:nth-child(2) {
+    display: none;
+  }
+
+
   nav .links a {
     padding: 8px 10px;
     font-size: 0.95rem;
@@ -398,8 +450,10 @@ footer {
 
   /* Product card compact */
   .product-card {
-    display: grid;
-    grid-template-columns: 120px 1fr;
+    /*display: grid;
+    grid-template-columns: 120px 1fr;*/
+    display: flex;
+    flex-direction: column;
     gap: 0.8rem;
     align-items: start;
   }
@@ -459,11 +513,12 @@ footer {
 
 /* Buttons (reutilizables) */
 .btn {
-  padding: 0.5rem 0.9rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 6px;
   border: none;
   cursor: pointer;
   font-weight: 600;
+  text-decoration: none;
   transition: all .12s ease;
 }
 
@@ -539,4 +594,15 @@ footer {
 .slider-controls button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-info {
+    width: 100%;
+  }
 }

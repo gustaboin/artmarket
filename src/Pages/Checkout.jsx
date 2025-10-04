@@ -107,7 +107,7 @@ const Checkout = () =>
 
                 <label>
                     CVV:
-                    <input type="password" name="cvv" value={formData.cvv} onChange={handleChange} placeholder="123" />
+                    <input type="password" name="cvv" value={formData.cvv} onChange={handleChange} placeholder="555" />
                     {errors.cvv && <span className="error">{errors.cvv}</span>}
                 </label>
 

@@ -13,7 +13,7 @@ const Cart = () =>
 
     if (cartItems.length === 0)
     {
-        return (<div className="cart"><p><h2>Tu carrito está vacío.</h2> </p>
+        return (<div className="cart" style={{ backgroundColor: 'rgba(241,193,193,1)', }}><h2>Tu carrito está vacío.</h2>
             <img className="img" src={`${import.meta.env.BASE_URL}${'/images/vacio.png'}`} alt="carrito vacio" />
             <Link to="/" className="btn btn-primary">
                 Seguir navegando!

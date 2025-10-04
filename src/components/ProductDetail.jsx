@@ -32,12 +32,17 @@ const ProductDetail = () =>
     return (
         <div className="product-detail">
             <img style={{ maxWidth: '300px' }} src={`${import.meta.env.BASE_URL}${product.imageUrl}`} alt={product.title} />
-            <h2>{product.title}</h2>
-            <p><strong>Artista:</strong> {product.artist}</p>
-            <p>{product.description}</p>
-            <p><strong>Precio:</strong> ${product.price}</p>
-            <button onClick={() => addToCart(product)}>Agregar al carrito</button>
-        </div>
+            <div className="product-info">
+                <h2>{product.title}</h2>
+                <p>{product.description}</p></div>
+
+
+            <div>
+                <p><strong>Artista:</strong> {product.artist}</p>
+
+                <p><strong>Precio:</strong> ${product.price}</p>
+                <button onClick={() => addToCart(product)}>Agregar al carrito</button>
+            </div></div>
     );
 };
 
