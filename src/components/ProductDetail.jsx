@@ -11,7 +11,7 @@ const ProductDetail = () =>
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const { addToCart } = useCart();
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // aca para poner un boton de volver
 
     useEffect(() =>
     {
@@ -32,14 +32,22 @@ const ProductDetail = () =>
     if (!product) return <p>Producto no encontrado</p>;
 
     return (
+
+
         <div className="product-detail">
+
             <img
                 style={{ maxWidth: '300px' }}
                 src={`${import.meta.env.BASE_URL}${product.imageUrl}`}
                 alt={product.title}
             />
             <div className="product-info">
-                <h2>{product.title}</h2>
+                <div className="info-header">
+                    <h2>{product.title}</h2>             <button className="btn btn-secondary" onClick={() => navigate('/')}>
+                        Volver
+                    </button>
+                </div>
+
                 <p>{product.description}</p>
 
                 <p><strong>Artista:</strong> {product.autor}</p>
@@ -51,7 +59,6 @@ const ProductDetail = () =>
                 <button onClick={() => addToCart(product)}>Agregar al carrito</button>
             </div>
         </div>
-
     );
 };
 

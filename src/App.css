@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 /* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -55,9 +58,12 @@ nav .links a {
 }
 
 nav .links a:hover {
-  color: #1e90ff;
+  color: #fff;
   transform: scale(1.1);
+  background-color: rgba(30, 144, 255, 0.2);
+  border-radius: 10px;
 }
+
 
 .wrapper {
   display: flex;
@@ -125,6 +131,7 @@ footer {
 /* Home page / product grid */
 .home {
   padding: 2rem;
+  padding-top: 0;
   width: 80%;
   margin: auto;
 }
@@ -133,6 +140,7 @@ footer {
 
   text-align: center;
   font-size: 2rem;
+  padding: 1.25rem;
 }
 
 .products-grid {
@@ -202,7 +210,7 @@ footer {
 }
 
 .precio {
-  color: #0d0d0e !important;
+  color: #041014 !important;
   font-weight: bold !important;
   font-size: 1.2rem !important;
 }
@@ -240,6 +248,18 @@ footer {
 .product-detail h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.info-header h2 {
+  margin: 0;
+  font-size: 2rem;
 }
 
 .product-detail p {

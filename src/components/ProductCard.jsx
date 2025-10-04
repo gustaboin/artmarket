@@ -13,7 +13,7 @@ const ProductCard = ({ product, openModal }) =>
                 <img src={`${import.meta.env.BASE_URL}${product.imageUrl}`} alt={product.title} />
                 <h3>{product.title}</h3>
                 <h4>{product.autor}</h4>
-                <p>{product.description.substring(0, 50) + "..."}</p>
+                <p>{product.description.substring(0, 80) + "..."}</p>
                 <p class="precio">Precio unitario: u$s {product.price}</p>
             </div>
             <div className="product-actions">
