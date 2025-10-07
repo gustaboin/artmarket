@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const ProductDetail = () =>
 {
     const { productId } = useParams();
+    console.log("ID que llega al detalle:", productId);
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const { addToCart } = useCart();
@@ -15,14 +16,18 @@ const ProductDetail = () =>
 
     useEffect(() =>
     {
+        // --> los console log porque mockapi me volvio loco es malisimo el endpoint
+        //console.log("Buscando producto ID:", productId); 
         fetchProductById(productId)
             .then((data) =>
             {
+                //      console.log("Producto encontrado:", data);
                 setProduct(data);
                 setLoading(false);
             })
             .catch((error) =>
             {
+                //    console.error("Error al cargar producto:", error);
                 console.error(error);
                 setLoading(false);
             });
@@ -38,12 +43,12 @@ const ProductDetail = () =>
 
             <img
                 style={{ maxWidth: '300px' }}
-                src={`${import.meta.env.BASE_URL}${product.imageUrl}`}
+                src={`${import.meta.env.BASE_URL}images/${product.imageUrl}`}
                 alt={product.title}
             />
             <div className="product-info">
                 <div className="info-header">
-                    <h2>{product.title}</h2>             <button className="btn btn-secondary" onClick={() => navigate('/')}>
+                    <h2>{product.title}</h2><button className="btn btn-secondary" onClick={() => navigate('/')}>
                         Volver
                     </button>
                 </div>

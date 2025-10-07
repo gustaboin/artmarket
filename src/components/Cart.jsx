@@ -26,7 +26,7 @@ const Cart = () =>
             <div className="cart-items">
                 {cartItems.map(item => (
                     <div className='item-key' key={item.id}>
-                        <img className="img" src={`${import.meta.env.BASE_URL}${item.imageUrl}`} alt={item.title} />
+                        <img className="img" src={`${import.meta.env.BASE_URL}images/${item.imageUrl}`} alt={item.title} />
                         <div className="cart-item-details">
                             <h3>{item.title}</h3>
                             {/*<p>Cantidad: {item.quantity}</p>*/}

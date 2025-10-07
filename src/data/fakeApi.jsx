@@ -1,3 +1,4 @@
+// este json lo subi a mockapi... tuve que rescribirlo xq mockapi es un espanto los ids son strings
 const products = [
     {
         id: 1,
@@ -95,6 +96,10 @@ const products = [
     }
 ]
 
+// --> 06-10-2025 como nos pidieron que usemos mockapi, voy a cambiar la funcion
+// las imagenes las dejo de manera local , porque no tengo url
+
+/*
 export function fetchProducts()
 {
     return new Promise((resolve) =>
@@ -106,20 +111,6 @@ export function fetchProducts()
     });
 }
 
-/*
-export function fetchProductById(id)
-{
-    return new Promise((resolve, reject) =>
-    {
-        setTimeout(() =>
-        {
-            const product = products.find(p => p.id === id);
-            if (product) resolve(product);
-            else reject('Producto no encontrado');
-        }, 1000);
-    });
-}
-*/
 export function fetchProductById(id)
 {
     return new Promise((resolve, reject) =>
@@ -133,4 +124,36 @@ export function fetchProductById(id)
             else reject("Producto no encontrado");
         }, 1000);
     });
+}
+
+*/
+
+const API_URL = "https://68e45f7a8e116898997ba866.mockapi.io/products"
+
+export function fetchProducts()
+{
+    return fetch(API_URL)
+        .then((res) =>
+        {
+            if (!res.ok) throw new Error("Error al obtener productos");
+            return res.json();
+        });
+}
+
+export async function fetchProductById(id)
+{
+    try
+    {
+        const res = await fetch(`${API_URL}/${id}`);
+        if (!res.ok)
+        {
+            throw new Error("Producto no encontrado");
+        }
+        const data = await res.json();
+        return data;
+    } catch (error)
+    {
+        console.error("Error en fetchProductById:", error.message);
+        throw error;
+    }
 }
