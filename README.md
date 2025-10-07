@@ -59,6 +59,11 @@ Cloná este repo:
 
 ```bash
 git clone https://github.com/tuusuario/art-marketplace.git
+
+```
+
+```bash
+
 cd art-marketplace
 
 npm install
