@@ -14,7 +14,7 @@ const Cart = () =>
     if (cartItems.length === 0)
     {
         return (<div className="cart" style={{ backgroundColor: 'rgba(241,193,193,1)', marginTop: '20px', }}><h2>Tu carrito está vacío.</h2>
-            <img className="img" src={`${import.meta.env.BASE_URL}${'/images/vacio.png'}`} alt="carrito vacio" />
+            <img className="img-vacio" src={`${import.meta.env.BASE_URL}${'/images/vacio.png'}`} alt="carrito vacio" />
             <Link to="/" className="btn btn-primary">
                 Seguir navegando!
             </Link>
@@ -23,31 +23,37 @@ const Cart = () =>
     return (
         <div className="cart">
             <h2>Carrito</h2>
-            {cartItems.map(item => (
-                <div className='item-key' key={item.id}>
-                    <img className="img" src={`${import.meta.env.BASE_URL}${item.imageUrl}`} alt={item.title} />
-                    <h3>{item.title}</h3>
-                    {/*<p>Cantidad: {item.quantity}</p>*/}
-                    <p>Precio unitario: ${item.price}</p>
+            <div className="cart-items">
+                {cartItems.map(item => (
+                    <div className='item-key' key={item.id}>
+                        <img className="img" src={`${import.meta.env.BASE_URL}${item.imageUrl}`} alt={item.title} />
+                        <div className="cart-item-details">
+                            <h3>{item.title}</h3>
+                            {/*<p>Cantidad: {item.quantity}</p>*/}
+                            <p>Precio unitario: ${item.price}</p>
 
-                    <div className="qty-controls">
-                        <p>Cantidad: </p>
-                        <button className="btn btn-primary" onClick={() => decreaseQuantity(item.id)}>-</button>
-                        <span style={{ padding: '0 0.6rem', fontWeight: 700 }}>{item.quantity}</span>
-                        <button className="btn btn-primary" onClick={() => addToCart(item, 1)}>+</button>
+                            <div className="qty-controls">
+                                <p>Cantidad: </p>
+                                <button className="btn btn-primary" onClick={() => decreaseQuantity(item.id)}>-</button>
+                                <span style={{ padding: '0 0.6rem', fontWeight: 700 }}>{item.quantity}</span>
+                                <button className="btn btn-primary" onClick={() => addToCart(item, 1)}>+</button>
+                            </div>
+                            <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
+                        </div>
                     </div>
-                    <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
-                </div>
-            ))}
-            <hr />
-            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'space-between', marginTop: '1rem', }}>
-                <p style={{ fontSize: '30px' }}><strong>Total:</strong> ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</p>
-
-                <button className="btn btn-success" onClick={() => navigate('/Checkout')}>Proceder a Pago</button>
-
-                <button className="btn btn-danger" onClick={clearCart}>Vaciar carrito</button>
+                ))}
             </div>
-        </div >
+            <hr />
+            <div className="cart-summary">
+
+                <p style={{ fontSize: '30px' }}><strong>Total:</strong> ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</p>
+                <div className="cart-actions">
+                    <button className="btn btn-success" onClick={() => navigate('/Checkout')}>Proceder a Pago</button>
+
+                    <button className="btn btn-danger" onClick={clearCart}>Vaciar carrito</button>
+                </div>
+            </div >
+        </div>
     );
 };
 

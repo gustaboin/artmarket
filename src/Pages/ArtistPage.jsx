@@ -1,5 +1,5 @@
 import React from 'react';
-
+// aun no esta desarrollada la ruta para la descripcion del artista
 const ArtistPage = ({ artist }) =>
 {
     return (

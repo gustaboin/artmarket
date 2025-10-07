@@ -118,7 +118,7 @@ nav .links a:hover {
 
 /* Footer */
 footer {
-  /*margin-top: 3rem; quito el margin */
+  margin-top: 1rem;
   padding: 1.5rem;
   text-align: center;
   background-color: #82bad5;
@@ -126,6 +126,18 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #0b3763;
 }
+
+footer p {
+  font-size: 700;
+  text-transform: uppercase;
+}
+
+
+footer p a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
 
 
 /* Home page / product grid */
@@ -174,7 +186,8 @@ footer {
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .product-card img {
@@ -444,6 +457,10 @@ footer {
 
 @media (max-width: 768px) {
 
+
+  nav .logo {
+    margin-left: 20px;
+  }
 
   nav {
     flex-direction: column;
