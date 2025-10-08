@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { FaStar } from 'react-icons/fa';
+// import RatingStars from './RatingStars'; --> proximo paso estrellas segun el rating
 
 const ProductCard = ({ product, openModal }) =>
 { // Recibiendo openModal como prop
@@ -15,6 +17,11 @@ const ProductCard = ({ product, openModal }) =>
                 <h4>{product.autor}</h4>
                 <p>{product.description.substring(0, 80) + "..."}</p>
                 <p className="precio">Precio unitario: u$s {product.price}</p>
+                <div className="rating" style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <span>Rating: {product.rating}</span>
+                    {/*<RatingStars rating={parseFloat(product.rating)} size={18} />*/}
+                    <FaStar />
+                </div>
             </div>
             <div className="product-actions">
                 <Link className="btn btn-secondary" to={`/product/${product.id}`}>Ver más</Link>

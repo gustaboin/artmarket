@@ -638,6 +638,22 @@ footer p a {
   cursor: not-allowed;
 }
 
+/* agrego la libreria para rating */
+
+.rating {
+  color: #28a745;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating span {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+
 @media (max-width: 768px) {
   .product-detail {
     flex-direction: column;

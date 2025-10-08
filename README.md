@@ -71,6 +71,20 @@ npm install
 npm run dev
 
 Abrí en tu navegador >> http://localhost:5173
+
+```
+
+## Librerias instaladas
+
+```bash
+
+npm install react-router-dom
+
+npm install --save react-modal
+
+npm install react-icons
+
+npm install react-rating-stars-component
 ```
 
 ## Visualiza el proyecto
