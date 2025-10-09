@@ -1,28 +1,45 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+/*import Navbar from './components/Navbar';
+import Footer from './components/Footer'; */
+import Layout from './components/Layout';
 import Home from './Pages/Home';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Checkout from './Pages/Checkout';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import './App.css';
 
 function App()
 {
   return (
-    <Router basename="/artmarket/"> {/*  basename="/artmarket" si se publica en github pages */}
-      <Navbar />
-      <main style={{ padding: '0.5rem', minHeight: '80vh', }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:productId" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </main>
-      <Footer />
-    </Router>
+    <AuthProvider>
+      <CartProvider>
+        <Router basename="/artmarket/">
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/product/:productId" element={<ProductDetail />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route
+                path="/Checkout"
+                element={
+                  <ProtectedRoute>
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 

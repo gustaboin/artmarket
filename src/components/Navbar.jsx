@@ -23,7 +23,7 @@ const Navbar = () =>
                     <Link to="/cart" className='cart-icon'><FaCartPlus size={24} /></Link>
                     {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
                 </div>
-                <Link to="/" className='cart-icon'>Login </Link>
+                <Link to="/Login" className='cart-icon'>Login </Link>
             </div>
         </nav>
     );

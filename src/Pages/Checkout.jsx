@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './../Styles/Checkout.css';
 import './../App.css';
 
@@ -9,6 +10,7 @@ const Checkout = () =>
     const { cartItems, total, clearCart } = useCart();
     const navigate = useNavigate();
     const [showPay, setShowPay] = useState(false); // agregado el 05-10
+    const { isAuthenticated } = useAuth(); // agregado el 09-10
 
     const [formData, setFormData] = useState({
         name: '',

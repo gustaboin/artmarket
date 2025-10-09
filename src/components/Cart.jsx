@@ -3,13 +3,26 @@ import { useCart } from '../context/CartContext';
 import './../styles/Cart.css';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { useAuth } from '../context/AuthContext';
 
 const Cart = () =>
 {
 
     const { cartItems, removeItem, clearCart, addToCart, decreaseQuantity, total } = useCart();
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
+
+    const handleCheckout = () =>
+    {
+        if (isAuthenticated)
+        {
+            navigate('/Checkout');
+        }
+        else
+        {
+            navigate('/Login', { state: { from: 'cart' } });
+        }
+    }
 
     if (cartItems.length === 0)
     {
@@ -48,7 +61,8 @@ const Cart = () =>
 
                 <p style={{ fontSize: '30px' }}><strong>Total:</strong> ${cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)}</p>
                 <div className="cart-actions">
-                    <button className="btn btn-success" onClick={() => navigate('/Checkout')}>Proceder a Pago</button>
+                    <button className="btn btn-success" onClick={handleCheckout}>Proceder a Pago</button>
+
 
                     <button className="btn btn-danger" onClick={clearCart}>Vaciar carrito</button>
                 </div>

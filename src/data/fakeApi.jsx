@@ -1,4 +1,6 @@
 // este json lo subi a mockapi... tuve que rescribirlo xq mockapi es un espanto los ids son strings
+
+/*
 const products = [
     {
         id: 1,
@@ -99,7 +101,7 @@ const products = [
 // --> 06-10-2025 como nos pidieron que usemos mockapi, voy a cambiar la funcion
 // las imagenes las dejo de manera local , porque no tengo url
 
-/*
+
 export function fetchProducts()
 {
     return new Promise((resolve) =>
