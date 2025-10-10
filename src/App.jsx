@@ -9,6 +9,7 @@ import Cart from './components/Cart';
 import Checkout from './Pages/Checkout';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
@@ -35,6 +36,7 @@ function App()
               />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
         </Router>
