@@ -53,6 +53,18 @@ Permite explorar obras destacadas, ver detalles en un **modal** o página dedica
 
 ![Vista previa](public/images/estructura.png)
 
+## Mejoras agregado de Iniciar Sesion y Registrarse
+
+con la utilizacion de Localstorage en utils/UserStorage guardo los usuarios en Userdb en el localstorage
+
+### Login
+
+![Vista previa](public/images/login.png)
+
+### Registro
+
+![Vista previa](public/images/register.png)
+
 ## 📦 Instalación y uso
 
 Cloná este repo:

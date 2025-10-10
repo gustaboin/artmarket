@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Navigate, useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { verifyLogin } from "../utils/userStorage";
 import Register from "./Register";
@@ -9,15 +9,24 @@ const Login = () =>
 {
     const navigate = useNavigate();
     const location = useLocation();
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
 
     const [form, setForm] = useState({ usuario: "", password: "" });
     const [error, setError] = useState("");
 
+    /******** 10-10 agrego esto x si el usuario navegando escribe /login lo mando al inicio  ---> agregar en register tbnn */
+    if (isAuthenticated)
+    {
+        return <Navigate to="/" replace />;
+    }
+
+    /* comento esta linea ya que el 10-10 lo cambie x navigate y Link
     const handleGoToRegister = () =>
     {
         navigate("/register"); // Asumiendo que tu ruta de registro es /register
     };
+
+    */
 
     const handleChange = (e) =>
     {
@@ -73,7 +82,7 @@ const Login = () =>
                     name="usuario"
                     value={form.usuario}
                     onChange={handleChange}
-                    placeholder="Tu mail"
+                    placeholder="Email"
                 />
 
                 <input
@@ -81,18 +90,19 @@ const Login = () =>
                     name="password"
                     value={form.password}
                     onChange={handleChange}
-                    placeholder="password"
+                    placeholder="Contraseña"
                 />
 
                 {error && <p className="error">{error}</p>}
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', alignItems: 'center', marginBottom: '1rem' }}>
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn-login">
                         Ingresar
                     </button>
-                    <button type="button" className="btn btn-success" onClick={handleGoToRegister}>
-                        Registrarse
-                    </button></div>
+                </div>
             </form>
+            <p className="register-link">
+                ¿No tenés cuenta? <Link to="/register">Registrate</Link>
+            </p>
         </div>
     );
 };

@@ -10,7 +10,7 @@ const Checkout = () =>
     const { cartItems, total, clearCart } = useCart();
     const navigate = useNavigate();
     const [showPay, setShowPay] = useState(false); // agregado el 05-10
-    const { isAuthenticated } = useAuth(); // agregado el 09-10
+    const { user } = useAuth(); // agregado el 09-10
 
     const [formData, setFormData] = useState({
         name: '',
@@ -35,7 +35,7 @@ const Checkout = () =>
         if (!formData.name) newErrors.name = "Nombre requerido";
         if (!formData.email.includes('@')) newErrors.email = "Email inválido";
         if (!formData.address) newErrors.address = "Dirección requerida";
-        if (!/^\d{16}$/.test(formData.cardNumber)) newErrors.cardNumber = "Número de tarjeta inválido";
+        if (!/^\d{16}$/.test(formData.cardNumber)) newErrors.cardNumber = "Número de tarjeta inválido, deben ser 16 digitos";
         if (!/^\d{2}\/\d{2}$/.test(formData.expiry)) newErrors.expiry = "Formato inválido (MM/YY)";
         if (!/^\d{3}$/.test(formData.cvv)) newErrors.cvv = "CVV inválido";
 
@@ -67,6 +67,8 @@ const Checkout = () =>
     {
         return <p>Tu carrito está vacío. Agrega productos antes de proceder al pago.</p>;
     }
+
+    const email = user?.email?.split('@')[0]; // esta fantasmeada es para que solo sea vea el nombre del mail y no el mail
 
     return (
         <div>
@@ -129,7 +131,8 @@ const Checkout = () =>
                 <div className="modal-overlay">
                     <div className="modal-card">
                         <h2>✅ Pago exitoso</h2>
-                        <p>¡Gracias por tu compra! Tu pedido está siendo procesado.</p>
+                        <p>¡Gracias <strong> {email}</strong> por tu compra! Tu pedido está siendo procesado.</p>
+                        <p> Te llegara un correo a <strong> {formData.email} </strong> con los detalles.</p>
                         <button
                             className="btn btn-success"
                             onClick={() => navigate('/')}
@@ -138,9 +141,10 @@ const Checkout = () =>
                         </button>
                     </div>
                 </div>
-            )}
+            )
+            }
 
-        </div>
+        </div >
 
 
     );

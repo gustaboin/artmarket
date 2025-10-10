@@ -1,10 +1,10 @@
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { registerUser } from "../utils/UserStorage"; // Importamos la utilidad
-
+import { Navigate, useNavigate, Link } from "react-router-dom";
+import { registerUser } from "../utils/userStorage"; // Importamos la utilidad
 // uso el mismo css que para el login
 import "../Styles/Login.css";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () =>
 {
@@ -12,6 +12,12 @@ const Register = () =>
     const [form, setForm] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const { isAuthenticated } = useAuth();
+
+    if (isAuthenticated)
+    {
+        return <Navigate to="/" replace />;
+    }
 
     const handleChange = (e) =>
     {
@@ -71,8 +77,11 @@ const Register = () =>
                 {error && <p className="error">{error}</p>}
                 {success && <p className="success">{success}</p>}
 
-                <button type="submit" className="btn btn-Success">Registrarme</button>
+                <button type="submit" className="btn-login">Registrarme</button>
             </form>
+            <p className="register-link">
+                ¿ya tenés cuenta? <Link to="/login">Ir a Login</Link>
+            </p>
         </div>
     );
 };
