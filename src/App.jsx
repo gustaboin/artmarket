@@ -11,6 +11,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
+import Screensaver from './components/Screensaver';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import './App.css';
@@ -39,6 +40,7 @@ function App()
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
+          <Screensaver />
         </Router>
       </CartProvider>
     </AuthProvider>

@@ -65,6 +65,12 @@ con la utilizacion de Localstorage en utils/UserStorage guardo los usuarios en U
 
 ![Vista previa](public/images/register.png)
 
+## Bonus fondo de pantalla x inactividad (Component Screensaver)
+
+A los 30 segundos de inactividad se va mostrar un array con palabras relacionadas al arte, se puede cambiar el tiempo de inactividad
+
+![Vista previa](public/images/screensaver.png)
+
 ## 📦 Instalación y uso
 
 Cloná este repo:
