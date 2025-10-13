@@ -30,14 +30,14 @@ const Checkout = () =>
 
     const validate = () =>
     {
-        // sacado del curso de NodeJs    
+        // sacado del curso de NodeJs    --> 13/10 COMENTO LOS DATOS DE CARD NUMBER <--
         const newErrors = {};
         if (!formData.name) newErrors.name = "Nombre requerido";
         if (!formData.email.includes('@')) newErrors.email = "Email inválido";
         if (!formData.address) newErrors.address = "Dirección requerida";
-        if (!/^\d{16}$/.test(formData.cardNumber)) newErrors.cardNumber = "Número de tarjeta inválido, deben ser 16 digitos";
-        if (!/^\d{2}\/\d{2}$/.test(formData.expiry)) newErrors.expiry = "Formato inválido (MM/YY)";
-        if (!/^\d{3}$/.test(formData.cvv)) newErrors.cvv = "CVV inválido";
+        //    if (!/^\d{16}$/.test(formData.cardNumber)) newErrors.cardNumber = "Número de tarjeta inválido, deben ser 16 digitos";
+        //    if (!/^\d{2}\/\d{2}$/.test(formData.expiry)) newErrors.expiry = "Formato inválido (MM/YY)";
+        //    if (!/^\d{3}$/.test(formData.cvv)) newErrors.cvv = "CVV inválido";
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -104,7 +104,8 @@ const Checkout = () =>
                         <input type="text" name="address" value={formData.address} onChange={handleChange} />
                         {errors.address && <span className="error">{errors.address}</span>}
                     </label>
-
+                    {/*     
+                            COMENTO DATOS DE LA TARJETA, PORQUE EL PROFE NO QUIERE QUE LO USEMOS EN EL PROYECTO 
                     <label>
                         Número de tarjeta:
                         <input type="text" name="cardNumber" value={formData.cardNumber} onChange={handleChange} placeholder="1234567812345678" />
@@ -122,7 +123,7 @@ const Checkout = () =>
                         <input type="password" name="cvv" value={formData.cvv} onChange={handleChange} placeholder="555" />
                         {errors.cvv && <span className="error">{errors.cvv}</span>}
                     </label>
-
+*/}
                     <button type="submit" className="btn btn-primary">Pagar</button>
                 </form>
             </div>
@@ -130,7 +131,7 @@ const Checkout = () =>
             {showPay && (
                 <div className="modal-overlay">
                     <div className="modal-card">
-                        <h2>✅ Pago exitoso</h2>
+                        <h2>✅ Compra exitosa</h2>
                         <p>¡Gracias <strong> {email}</strong> por tu compra! Tu pedido está siendo procesado.</p>
                         <p> Te llegara un correo a <strong> {formData.email} </strong> con los detalles.</p>
                         <button
