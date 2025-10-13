@@ -4,7 +4,7 @@ const Footer = () =>
 {
     return (
         <footer>
-            <p>© 2025 <a href="https://github.com/gustaboin/artmarket">Arte Marketplace</a>. Todos los derechos reservados.</p>
+            <p>© 2025 <a href="https://github.com/gustaboin/artmarket">Art Market</a>. Todos los derechos reservados.</p>
         </footer>
     );
 };
