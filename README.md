@@ -76,7 +76,7 @@ A los 30 segundos de inactividad se va mostrar un array con palabras relacionada
 Cloná este repo:
 
 ```bash
-git clone https://github.com/tuusuario/art-marketplace.git
+git clone https://github.com/gustaboin/artmarket.git
 
 ```
 
