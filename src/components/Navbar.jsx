@@ -29,11 +29,18 @@ const Navbar = () =>
             {/* <DarkModeToggle />*/}
             <div className="links">
                 <Link to="/">Inicio</Link>
+        {user?.role === "admin" ? (
+          <Link to="/dashboard" className='dashboard'>Dashboard</Link>
+        ) : (
+             <>
                 <Link to="/cart" className='cart-icon checkout'>Checkout </Link>
+                                          </>
+        )}
                 <div className="cart-icon">
                     <Link to="/cart" className='cart-icon'><FaCartPlus size={24} /></Link>
                     {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
                 </div>
+
                 {!isAuthenticated ? (
                     <Link to="/login" className="cart-icon">Login</Link>
                 ) : (

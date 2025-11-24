@@ -4,6 +4,7 @@ import { useProducts } from "../context/ProductContext";
 import ProductForm from "../components/admin/ProductForm";
 import ProductList from "../components/admin/ProductList";
 
+
 export default function Dashboard() {
   const { user } = useAuth();
   const { products, loading } = useProducts();
@@ -13,16 +14,23 @@ export default function Dashboard() {
   }
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Dashboard Admin</h1>
 
-      <ProductForm />
-
-      {loading ? (
+<div className="dashboard-container">
+  <h2 className="dashboard-title">Dashboard Admin</h2>
+  <div className="card">
+    <ProductForm />
+  </div>
+  <div className="table">
+    {loading ? (
         <p>Cargando productos...</p>
       ) : (
         <ProductList products={products} />
       )}
-    </div>
+  </div>
+</div>
+
+
+
+
   );
 }

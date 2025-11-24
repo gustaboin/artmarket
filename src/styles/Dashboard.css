@@ -5,6 +5,7 @@
   max-width: 1200px;
   margin: 0 auto;
   color: #0a2a43;
+  background-color: #f5f9ff; /* para destacar el contenido */
 }
 
 .dashboard-title {
@@ -21,11 +22,7 @@
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-.card h3 {
-  margin: 0 0 15px;
-  font-size: 20px;
+  max-width: 100%;
 }
 
 /* ===== INPUTS ===== */
@@ -34,6 +31,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .form-grid input {
@@ -42,6 +41,16 @@
   border: 1px solid #8bb0c7;
   background: #f8fbff;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Inputs que deben ser más anchos ocupan dos columnas */
+.form-grid input[name="description"],
+.form-grid input[name="dimension"],
+.form-grid input[name="format"],
+.form-grid input[name="rating"] {
+  grid-column: span 2;
 }
 
 .btn-primary {
@@ -114,4 +123,10 @@
 
 .delete:hover {
   background: #d94a4a;
+}
+
+.error {
+  color: #ff5c5c;
+  font-size: 0.8rem;
+  margin: 4px 0 10px 0;
 }

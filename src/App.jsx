@@ -16,6 +16,7 @@ import Screensaver from './components/Screensaver';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider } from './context/ProductContext';
+import ProductEdit from "./components/admin/ProductEdit";
 import './App.css';
 
 function App()
@@ -42,6 +43,7 @@ function App()
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/admin/edit/:id" element={<ProductEdit />} />
             </Routes>
           </Layout>
           <Screensaver />

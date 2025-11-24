@@ -38,7 +38,6 @@ const Login = () =>
         e.preventDefault();
         setError("");
 
-        // ⚠️ Recomendación: Agregar una validación simple de campos vacíos aquí.
         if (form.usuario.trim() === "" || form.password.trim() === "")
         {
             setError("Por favor, ingresa tu email y contraseña.");

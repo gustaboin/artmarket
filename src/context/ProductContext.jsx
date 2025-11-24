@@ -14,7 +14,7 @@ export const ProductProvider = ({ children }) => {
     setLoading(true);
     try {
       const res = await axios.get(API_URL);
-      setProducts(res.data);
+      setProducts(res.data); 
     } finally {
       setLoading(false);
     }

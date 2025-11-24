@@ -23,7 +23,7 @@ const Screensaver = () =>
         {
             clearTimeout(timeout);
             setShow(false);
-            timeout = setTimeout(() => setShow(true), 30000); //  segundos sin actividad
+            timeout = setTimeout(() => setShow(true), 50000); //  segundos sin actividad
         };
 
         window.addEventListener("mousemove", resetTimer);
