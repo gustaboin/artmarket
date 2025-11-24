@@ -1,0 +1,117 @@
+/* ======= DASHBOARD LAYOUT ======= */
+
+.dashboard-container {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #0a2a43;
+}
+
+.dashboard-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* ======= FORM CARD ======= */
+
+.card {
+  background: #ffffffdd;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin: 0 0 15px;
+  font-size: 20px;
+}
+
+/* ===== INPUTS ===== */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.form-grid input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #8bb0c7;
+  background: #f8fbff;
+  font-size: 14px;
+}
+
+.btn-primary {
+  grid-column: span 4;
+  padding: 10px;
+  background: #0a3d62;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #07415a;
+}
+
+/* ======= PRODUCT LIST ======= */
+
+.table {
+  width: 100%;
+  background: #ffffffdd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.table-header, .table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  padding: 10px 0;
+}
+
+.table-header {
+  font-weight: bold;
+  border-bottom: 2px solid #b3c8d5;
+}
+
+.table-row {
+  border-bottom: 1px solid #d7e1e7;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit {
+  background: #4da3ff;
+  color: white;
+}
+
+.edit:hover {
+  background: #2e85df;
+}
+
+.delete {
+  background: #ff5c5c;
+  color: white;
+}
+
+.delete:hover {
+  background: #d94a4a;
+}

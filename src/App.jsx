@@ -9,11 +9,13 @@ import Cart from './components/Cart';
 import Checkout from './Pages/Checkout';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Dashboard from './Pages/Dashboard';
 import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import Screensaver from './components/Screensaver';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ProductProvider } from './context/ProductContext';
 import './App.css';
 
 function App()
@@ -21,6 +23,7 @@ function App()
   return (
     <AuthProvider>
       <CartProvider>
+        <ProductProvider>
         <Router basename="/artmarket/">
           <Layout>
             <Routes>
@@ -35,6 +38,7 @@ function App()
                   </ProtectedRoute>
                 }
               />
+              <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
@@ -42,6 +46,7 @@ function App()
           </Layout>
           <Screensaver />
         </Router>
+        </ProductProvider>
       </CartProvider>
     </AuthProvider>
   );

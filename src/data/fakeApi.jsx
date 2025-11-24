@@ -132,14 +132,13 @@ export function fetchProductById(id)
 
 const API_URL = "https://68e45f7a8e116898997ba866.mockapi.io/products"
 
-export function fetchProducts()
-{
+export function fetchProducts() {
     return fetch(API_URL)
-        .then((res) =>
-        {
+        .then((res) => {
             if (!res.ok) throw new Error("Error al obtener productos");
             return res.json();
-        });
+        })
+        .then((products) => products.filter(p => p.active !== false));
 }
 
 export async function fetchProductById(id)

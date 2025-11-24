@@ -56,6 +56,10 @@ const Login = () =>
 
             login(userData);
 
+            if (userData.role === "admin") {
+                navigate("/dashboard");
+            }
+
             // Redirección
             if (location.state?.from === "cart")
             {
