@@ -23,8 +23,8 @@ export default function ProductRow({ product }) {
       <span>${product.price}</span>
       <span>{product.stock}</span>
 
-      <span>
-        <button className="action-btn edit" onClick={toggleActive}>
+      <span className="buttons">
+        <button className={`action-btn ${isActive ? "active" : "notActive"}`} onClick={toggleActive}>
           {isActive ? "Desactivar" : "Activar"}
         </button>
         <button

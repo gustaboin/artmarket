@@ -23,10 +23,13 @@ export default function ProductEdit() {
   if (!product) return <p>Cargando...</p>;
 
   return (
+    <div className="dashboard-container">
+     <div className="card">
     <ProductForm
       mode="edit"
       initialData={product}
       onSubmit={handleEdit}
     />
+    </div></div>
   );
 }

@@ -59,7 +59,7 @@ export default function ProductForm({ initialData, onSubmit, mode = "create" }) 
       </div>
 
       <div>
-        <input name="imagenUrl" placeholder="URL Imagen" value={form.imagenUrl} onChange={handleChange} />
+        <input name="imageUrl" placeholder="URL Imagen" value={form.imageUrl} onChange={handleChange} />
         {errors.imagenUrl && <p className="error">{errors.imagenUrl}</p>}
       </div>
 
