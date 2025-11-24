@@ -9,7 +9,7 @@ import { useAuth } from "../context/AuthContext";
 const Register = () =>
 {
     const navigate = useNavigate();
-    const [form, setForm] = useState({ email: "", password: "" });
+    const [form, setForm] = useState({ email: "", password: "",role:"" });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const { isAuthenticated } = useAuth();

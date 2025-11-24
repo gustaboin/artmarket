@@ -14,10 +14,11 @@ export const getAllUsers = () =>
 const saveAllUsers = (users) =>
 {
     localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(users));
+    
 };
 
 // registro
-export const registerUser = ({ email, password }) =>
+export const registerUser = ({ email, password,role }) =>
 {
     const users = getAllUsers();
 
@@ -28,7 +29,7 @@ export const registerUser = ({ email, password }) =>
     }
 
     // 2. Agregar el nuevo usuario (usando el email como clave)
-    users[email] = { password, email };
+    users[email] = { password, email, role };
 
     // 3. Guardar la DB actualizada es LocalStorage pero bueno enel futuro sera db
     saveAllUsers(users);
@@ -52,6 +53,37 @@ export const verifyLogin = ({ email, password }) =>
         throw new Error("Contraseña incorrecta.");
     }
 
-    const { password: _, ...userData } = userRecord;
-    return userData; // { email: 'gus@mail.com' }
+    const role = userRecord.role ?? null;   // null si no tiene rol
+
+    return {
+        email: userRecord.email,
+        role: role,
+    };
+
+};
+
+// Agrego el default admin ya que tengo que hacer el crud
+
+export const initializeAdminUser = () =>
+{
+    const storedUsers = localStorage.getItem(USER_STORAGE_KEY);
+    
+    // Si no hay nada almacenado bajo la clave "users_db", inicializamos con el admin
+    if (!storedUsers)
+    {
+        const defaultAdmin = 
+        { 
+            "admin@artmarket.com": 
+            { 
+                email: "admin@artmarket.com", 
+                password: "1234", 
+                role: "admin" 
+            }
+        };
+        
+        // Guardar el objeto en el formato que usas ({ email: { ... } })
+        localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(defaultAdmin));
+        
+        console.log("Admin por defecto inicializado.");
+    }
 };

@@ -11,7 +11,7 @@ const Login = () =>
     const location = useLocation();
     const { login, isAuthenticated } = useAuth();
 
-    const [form, setForm] = useState({ usuario: "", password: "" });
+    const [form, setForm] = useState({ usuario: "", password: "", role:"" });
     const [error, setError] = useState("");
 
     /******** 10-10 agrego esto x si el usuario navegando escribe /login lo mando al inicio  ---> agregar en register tbnn */
