@@ -20,7 +20,7 @@ const Home = () =>
     const navigate = useNavigate();
     const { addToCart } = useCart();
 
-
+    const baseUrl = import.meta.env.BASE_URL;
     // agrego un index 02-10-2025 para poder hacer mejor la navegabilidad con botones next y prev
     const [startIndex, setStartIndex] = useState(0);
     const itemsPerPage = 4;
@@ -107,7 +107,7 @@ const Home = () =>
             </div>
 
             {/* Modal */}
-            <Modal
+<Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 contentLabel="Producto Detalles"
@@ -119,7 +119,20 @@ const Home = () =>
                     <>
                         <h2>{selectedProduct.title} </h2>
                         <p>{selectedProduct.description}</p>
-                        <img className='modal-image' src={`${import.meta.env.BASE_URL}images/${selectedProduct.imageUrl}`} alt={selectedProduct.title} />
+                        
+
+                        <img 
+                            className='modal-image' 
+                            src={
+                                selectedProduct.imageUrl && (
+                                    selectedProduct.imageUrl.startsWith('http') || selectedProduct.imageUrl.startsWith('https')
+                                        ? selectedProduct.imageUrl // Externa: Uso la URL tal cual
+                                        : `${baseUrl}images/${selectedProduct.imageUrl}` // Interna: Concateno la base
+                                )
+                            } 
+                            alt={selectedProduct.title} 
+                        />
+                        
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', alignItems: 'center', marginBottom: '1rem' }}>
                             <button className="btn btn-success" onClick={addFromModal}>
                                 Agregar al carrito

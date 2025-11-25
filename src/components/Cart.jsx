@@ -12,6 +12,8 @@ const Cart = () =>
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
 
+    const baseUrl = import.meta.env.BASE_URL;
+
     const handleCheckout = () =>
     {
         if (isAuthenticated)
@@ -37,24 +39,34 @@ const Cart = () =>
         <div className="cart">
             <h2>Carrito</h2>
             <div className="cart-items">
-                {cartItems.map(item => (
-                    <div className='item-key' key={item.id}>
-                        <img className="img" src={`${import.meta.env.BASE_URL}images/${item.imageUrl}`} alt={item.title} />
-                        <div className="cart-item-details">
-                            <h3>{item.title}</h3>
-                            {/*<p>Cantidad: {item.quantity}</p>*/}
-                            <p>Precio unitario: ${item.price}</p>
+                {cartItems.map(item => {
+                    const itemImageSource = 
+                        item.imageUrl && (
+                            item.imageUrl.startsWith('http') || item.imageUrl.startsWith('https')
+                                ? item.imageUrl // Si es externa
+                                : `${baseUrl}images/${item.imageUrl}` // Si es interna
+                        );
 
-                            <div className="qty-controls">
-                                <p>Cantidad: </p>
-                                <button className="btn btn-primary" onClick={() => decreaseQuantity(item.id)}>-</button>
-                                <span style={{ padding: '0 0.6rem', fontWeight: 700 }}>{item.quantity}</span>
-                                <button className="btn btn-primary" onClick={() => addToCart(item, 1)}>+</button>
+                    return (
+                        <div className='item-key' key={item.id}>
+                            {/* Usamos la URL calculada */}
+                            <img className="img" src={itemImageSource} alt={item.title} />
+                            
+                            <div className="cart-item-details">
+                                <h3>{item.title}</h3>
+                                <p>Precio unitario: ${item.price}</p>
+
+                                <div className="qty-controls">
+                                    <p>Cantidad: </p>
+                                    <button className="btn btn-primary" onClick={() => decreaseQuantity(item.id)}>-</button>
+                                    <span style={{ padding: '0 0.6rem', fontWeight: 700 }}>{item.quantity}</span>
+                                    <button className="btn btn-primary" onClick={() => addToCart(item, 1)}>+</button>
+                                </div>
+                                <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
                             </div>
-                            <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar</button>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
             <hr />
             <div className="cart-summary">

@@ -14,6 +14,8 @@ const ProductDetail = () =>
     const { addToCart } = useCart();
     const navigate = useNavigate(); // aca para poner un boton de volver
 
+    const baseUrl = import.meta.env.BASE_URL; // para la imagen si es local o url
+
     useEffect(() =>
     {
         // --> los console log porque mockapi me volvio loco es malisimo el endpoint
@@ -36,6 +38,15 @@ const ProductDetail = () =>
     if (loading) return <Loader />;
     if (!product) return <p>Producto no encontrado</p>;
 
+    // agrego esto el 25/11/2025 para imagenes desde url o locales
+
+    const imageSource = 
+        product.imageUrl && (
+            product.imageUrl.startsWith('http') || product.imageUrl.startsWith('https')
+                ? product.imageUrl // Si es externa, la usamos directamente
+                : `${baseUrl}images/${product.imageUrl}` // Si es interna, concatenamos
+        );
+
     return (
 
 
@@ -43,7 +54,7 @@ const ProductDetail = () =>
 
             <img
                 style={{ maxWidth: '300px' }}
-                src={`${import.meta.env.BASE_URL}images/${product.imageUrl}`}
+                src={imageSource}
                 alt={product.title}
             />
             <div className="product-info">

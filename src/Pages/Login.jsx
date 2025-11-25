@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Navigate, useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { verifyLogin } from "../utils/userStorage";
-import Register from "./Register";
 import "../Styles/Login.css";
 
 const Login = () =>
@@ -14,20 +13,14 @@ const Login = () =>
     const [form, setForm] = useState({ usuario: "", password: "", role:"" });
     const [error, setError] = useState("");
 
-    /******** 10-10 agrego esto x si el usuario navegando escribe /login lo mando al inicio  ---> agregar en register tbnn */
+    /*
+    // Si ya está autenticado, lo redirigimos a la página de inicio (Home)
     if (isAuthenticated)
     {
         return <Navigate to="/" replace />;
     }
 
-    /* comento esta linea ya que el 10-10 lo cambie x navigate y Link
-    const handleGoToRegister = () =>
-    {
-        navigate("/register"); // Asumiendo que tu ruta de registro es /register
-    };
-
     */
-
     const handleChange = (e) =>
     {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -46,27 +39,27 @@ const Login = () =>
 
         try
         {
-            // Verificar las credenciales 
+            // 1. Verificar credenciales y obtener datos
             const userData = verifyLogin({
                 email: form.usuario,
                 password: form.password,
             });
 
-
             login(userData);
 
-            if (userData.role === "admin") {
+            if (userData.role === "admin") 
+            {
                 navigate("/dashboard");
             }
-
-            // Redirección
-            if (location.state?.from === "cart")
+            else if (location.state?.from === "cart")
             {
                 navigate("/checkout");
-            } else
+            } 
+            else
             {
                 navigate("/");
             }
+            
         } catch (err)
         {
 

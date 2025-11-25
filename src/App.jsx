@@ -16,6 +16,7 @@ import Screensaver from './components/Screensaver';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider } from './context/ProductContext';
+import { CategoryProvider } from './context/CategoryContext';
 import ProductEdit from "./components/admin/ProductEdit";
 import './App.css';
 
@@ -25,6 +26,7 @@ function App()
     <AuthProvider>
       <CartProvider>
         <ProductProvider>
+          <CategoryProvider>
         <Router basename="/artmarket/">
           <Layout>
             <Routes>
@@ -48,6 +50,7 @@ function App()
           </Layout>
           <Screensaver />
         </Router>
+        </CategoryProvider>
         </ProductProvider>
       </CartProvider>
     </AuthProvider>

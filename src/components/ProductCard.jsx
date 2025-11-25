@@ -8,11 +8,21 @@ const ProductCard = ({ product, openModal }) =>
 { // Recibiendo openModal como prop
     const { addToCart } = useCart();
 
+    const baseUrl = import.meta.env.BASE_URL;
+    
+    const imageSource = 
+        product.imageUrl && (
+            product.imageUrl.startsWith('http') || product.imageUrl.startsWith('https')
+                ? product.imageUrl // Si es externa, uso url
+                : `${baseUrl}images/${product.imageUrl}` // Si es interna, concateno
+        );
+
     return (
         <div className="product-card" onClick={() => openModal(product)}> {/* Ejecutando openModal al hacer clic */}
-            {/* <img src={product.imageUrl} alt={product.title} / > * /} {/ * comento para poder publicar en git con la ruta */}
+            
             <div className="product-content">
-                <img src={`${import.meta.env.BASE_URL}images/${product.imageUrl}`} alt={product.title} /> {/* agrego images/ x mockapi */}
+            {/*    <img src={`${import.meta.env.BASE_URL}images/${product.imageUrl}`} alt={product.title} /> */}
+            <img src={imageSource} alt={product.title} />
                 <h3>{product.title}</h3>
                 <h4>{product.autor}</h4>
                 <p>{product.description.substring(0, 80) + "..."}</p>
