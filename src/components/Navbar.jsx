@@ -25,7 +25,7 @@ const Navbar = () =>
 
     return (
         <nav>
-            <div className="logo">Art Market</div>
+            <div className="logo" data-text="Art Market">Art Market</div>
             {/* <DarkModeToggle />*/}
             <div className="links">
                 <Link to="/">Inicio</Link>
