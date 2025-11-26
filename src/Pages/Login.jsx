@@ -2,105 +2,104 @@ import React, { useState } from "react";
 import { Navigate, useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { verifyLogin } from "../utils/userStorage";
+import { toast } from "react-toastify";
 import "../Styles/Login.css";
 
-const Login = () =>
-{
-    const navigate = useNavigate();
-    const location = useLocation();
-    const { login, isAuthenticated } = useAuth();
+const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { login, isAuthenticated } = useAuth();
 
-    const [form, setForm] = useState({ usuario: "", password: "", role:"" });
-    const [error, setError] = useState("");
+  const [form, setForm] = useState({ usuario: "", password: "" });
+  const [error, setError] = useState("");
 
-    /*
-    // Si ya está autenticado, lo redirigimos a la página de inicio (Home)
-    if (isAuthenticated)
-    {
-        return <Navigate to="/" replace />;
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!form.usuario.trim() || !form.password.trim()) {
+      toast.error("Por favor, completa los campos.");
+      return;
     }
 
-    */
-    const handleChange = (e) =>
-    {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+  try {
+    // Verificar credenciales
+    const userData = verifyLogin({
+      email: form.usuario,
+      password: form.password,
+    });
 
-    const handleSubmit = (e) =>
-    {
-        e.preventDefault();
-        setError("");
+    login(userData);
+      const email = userData.email.split('@')[0]; // corto el nombre detras del arroba para hacerlo mas personalizado
+      toast.success("Bienvenido " + email);
 
-        if (form.usuario.trim() === "" || form.password.trim() === "")
-        {
-            setError("Por favor, ingresa tu email y contraseña.");
-            return;
-        }
 
-        try
-        {
-            // 1. Verificar credenciales y obtener datos
-            const userData = verifyLogin({
-                email: form.usuario,
-                password: form.password,
-            });
+    //  mejoras de visualizacion segun tl tipo de usuario si es admin dashboard si No es admin cart o home
 
-            login(userData);
+    // 1) Si es ADMIN → dashboard
+    if (userData.role === "admin") {
+      navigate("/dashboard");
+      return;
+    }
 
-            if (userData.role === "admin") 
-            {
-                navigate("/dashboard");
-            }
-            else if (location.state?.from === "cart")
-            {
-                navigate("/checkout");
-            } 
-            else
-            {
-                navigate("/");
-            }
-            
-        } catch (err)
-        {
+    // 2) Si venía desde el carrito → checkout
+    if (location.state?.from === "cart") {
+      navigate("/checkout");
+      return;
+    }
 
-            setError(err.message);
-        }
-    };
+    // 3) Si el carrito NO está vacío → ir al carrito
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (cart.length > 0) {
+      navigate("/cart");
+      return;
+    }
 
-    return (
-        <div className="login-page">
-            <h1>Iniciar sesión</h1>
+    // 4) Todo lo demás → home
+    navigate("/");
 
-            <form onSubmit={handleSubmit} className="login-form">
+  } catch (err) {
+    setError(err.message);
+  }
+  };
 
-                <input
-                    type="email"
-                    name="usuario"
-                    value={form.usuario}
-                    onChange={handleChange}
-                    placeholder="Email"
-                />
+  
 
-                <input
-                    type="password"
-                    name="password"
-                    value={form.password}
-                    onChange={handleChange}
-                    placeholder="Contraseña"
-                />
+  return (
+    <div className="login-page">
+      <h1>Iniciar sesión</h1>
 
-                {error && <p className="error">{error}</p>}
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', alignItems: 'center', marginBottom: '1rem' }}>
-                    <button type="submit" className="btn-login">
-                        Ingresar
-                    </button>
-                </div>
-            </form>
-            <p className="register-link">
-                ¿No tenés cuenta? <Link to="/register">Registrate</Link>
-            </p>
-        </div>
-    );
+      <form onSubmit={handleSubmit} className="login-form">
+        <input
+          type="email"
+          name="usuario"
+          value={form.usuario}
+          onChange={handleChange}
+          placeholder="Email"
+        />
+
+        <input
+          type="password"
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+          placeholder="Contraseña"
+        />
+
+        <button type="submit" className="btn-login">
+          Ingresar
+        </button>
+      </form>
+
+      <p className="register-link">
+        ¿No tenés cuenta? <Link to="/register">Registrate</Link>
+      </p>
+    </div>
+  );
 };
 
 export default Login;

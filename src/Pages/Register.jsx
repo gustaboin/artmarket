@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 import { registerUser } from "../utils/userStorage"; // Importamos la utilidad
 // uso el mismo css que para el login
-import "../Styles/Login.css";
 import { useAuth } from "../context/AuthContext";
-
+import { toast } from "react-toastify";
+import "../Styles/Login.css";
 const Register = () =>
 {
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Register = () =>
 
         if (!form.email || !form.password)
         {
-            setError("Por favor, completa todos los campos.");
+            toast.error("Completa todos los campos");
             return;
         }
 
@@ -41,7 +41,7 @@ const Register = () =>
             // Llama a la lógica de registro
             registerUser(form);
 
-            setSuccess("Registro exitoso! Redirigiendo al login...");
+            toast.success("Registro exitoso!");
             // Redirigir al login después de un breve momento
             setTimeout(() =>
             {

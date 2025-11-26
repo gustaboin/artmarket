@@ -19,10 +19,14 @@ import { ProductProvider } from './context/ProductContext';
 import { CategoryProvider } from './context/CategoryContext';
 import ProductEdit from "./components/admin/ProductEdit";
 import './App.css';
+// agregado el 25/11/2025
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App()
 {
   return (
+    <>
     <AuthProvider>
       <CartProvider>
         <ProductProvider>
@@ -54,6 +58,8 @@ function App()
         </ProductProvider>
       </CartProvider>
     </AuthProvider>
+    <ToastContainer position="top-right" autoClose={2000} />
+    </>
   );
 }
 

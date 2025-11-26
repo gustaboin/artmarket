@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -42,6 +43,7 @@ export const CartProvider = ({ children }) =>
                 return [...prev, { ...product, quantity: qty }];
             }
         });
+        toast.success("Producto agregado al carrito 🛒");
     };
 
     // funcion para eliminar unidad del carrito
