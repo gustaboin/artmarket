@@ -81,7 +81,7 @@ export const initializeAdminUser = () =>
             }
         };
         
-        // Guardar el objeto en el formato que usas ({ email: { ... } })
+        // Guardar el objeto en el formato ({ email: { ... } })
         localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(defaultAdmin));
         
         console.log("Admin por defecto inicializado.");

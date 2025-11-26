@@ -89,3 +89,10 @@ textarea {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+.credentials {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #333;
+    text-transform: lowercase;
+}

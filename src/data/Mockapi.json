@@ -11,7 +11,7 @@
     "format": "Acrílico sobre lienzo",
     "categoryId": "1",
     "rating": "4.5",
-    "active": false
+    "active": true
   },
   {
     "id": "2",
@@ -25,7 +25,7 @@
     "format": "Óleo sobre tabla",
     "categoryId": "2",
     "rating": "4.5",
-    "active": false
+    "active": true
   },
   {
     "id": "3",
@@ -39,7 +39,7 @@
     "format": "Óleo sobre lienzo",
     "categoryId": "3",
     "rating": "4.5",
-    "active": false
+    "active": true
   },
   {
     "id": "4",
@@ -53,7 +53,7 @@
     "format": "Técnica mixta",
     "categoryId": "4",
     "rating": "4.5",
-    "active": false
+    "active": true
   },
   {
     "id": "5",
@@ -95,7 +95,7 @@
     "format": "Serigrafía",
     "categoryId": "7",
     "rating": "4.5",
-    "active": false
+    "active": true
   },
   {
     "id": "8",
@@ -109,6 +109,20 @@
     "format": "Dibujo a lápiz",
     "categoryId": "8",
     "rating": "4.2",
+    "active": true
+  },
+  {
+    "title": "Inner World Woman",
+    "autor": "Web",
+    "description": "Arte Digital de una mujer atravesada por el capitalismo el amor y los lujos",
+    "imageUrl": "https://www.shutterstock.com/image-illustration/inner-world-women-creative-digital-600nw-2607564367.jpg",
+    "price": "70",
+    "stock": "2",
+    "dimension": "",
+    "format": "",
+    "categoryId": "6",
+    "id": "9",
+    "rating": "5",
     "active": true
   }
 ]

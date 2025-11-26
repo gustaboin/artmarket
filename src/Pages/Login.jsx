@@ -13,6 +13,7 @@ const Login = () => {
   const [form, setForm] = useState({ usuario: "", password: "" });
   const [error, setError] = useState("");
 
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -94,7 +95,7 @@ const Login = () => {
           Ingresar
         </button>
       </form>
-
+      <p className="credentials"> Adminuser: <b>admin@artmarket.com</b> password: <b>1234</b></p>
       <p className="register-link">
         ¿No tenés cuenta? <Link to="/register">Registrate</Link>
       </p>
