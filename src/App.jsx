@@ -12,6 +12,7 @@ import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
 import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedAdminRoute from "./components/ProtectedAdminRoute"; // add 26-11
 import Screensaver from './components/Screensaver';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
@@ -45,11 +46,25 @@ function App()
                   </ProtectedRoute>
                 }
               />
-              <Route path="/Dashboard" element={<Dashboard />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedAdminRoute>
+                    <Dashboard />
+                  </ProtectedAdminRoute>
+                }
+              />
+              <Route
+                path="/admin/edit/:id"
+                element={
+                  <ProtectedAdminRoute>
+                    <ProductEdit />
+                  </ProtectedAdminRoute>
+                }
+              />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
-              <Route path="/admin/edit/:id" element={<ProductEdit />} />
             </Routes>
           </Layout>
           <Screensaver />
