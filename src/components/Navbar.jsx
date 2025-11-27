@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext'; // importo carrito  de Context
 import { FaCartPlus } from "react-icons/fa";
@@ -14,47 +14,100 @@ const Navbar = () =>
     const CartItemCount = cartItems.length;
     const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
+    //menu burguer 26-11-2025
+    const [openMenu, setOpenMenu] = useState(false);
+
+
     // si cierra la sesion lo mando al home después del logout
     const handleLogout = () =>
     {
         logout();
         navigate('/');
+        setOpenMenu(false);
     };
 
     const email = user?.email?.split('@')[0];
 
-    return (
-        <nav>
-            <div className="logo" data-text="Art Market">Art Market</div>
-            {/* <DarkModeToggle />*/}
-            <div className="links">
-                <Link to="/">Inicio</Link>
+ return (
+    <nav className="navbar">
+      
+      {/* Logo */}
+      <div 
+        className="logo" 
+        data-text="Art Market"
+        onClick={() => navigate("/")}
+      >
+        Art Market
+      </div>
+
+      {/* Hamburger button */}
+      <div 
+        className={`burger ${openMenu ? "open" : ""}`} 
+        onClick={() => setOpenMenu(!openMenu)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Links */}
+      <div className={`links ${openMenu ? "show" : ""}`}>
+        
+        <Link to="/" onClick={() => setOpenMenu(false)}>Inicio</Link>
+
         {user?.role === "admin" ? (
-          <Link to="/dashboard" className='dashboard'>Dashboard</Link>
+          <Link 
+            to="/dashboard" 
+            className="dashboard" 
+            onClick={() => setOpenMenu(false)}
+          >
+            Dashboard
+          </Link>
         ) : (
-             <>
-                <Link to="/cart" className='cart-icon checkout'>Checkout </Link>
-                                          </>
+          <Link 
+            to="/cart" 
+            className="checkout" 
+            onClick={() => setOpenMenu(false)}
+          >
+            Checkout
+          </Link>
         )}
-                <div className="cart-icon">
-                    <Link to="/cart" className='cart-icon'><FaCartPlus size={24} /></Link>
-                    {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
-                </div>
 
-                {!isAuthenticated ? (
-                    <Link to="/login" className="cart-icon">Login</Link>
-                ) : (
-                    <div className="user-info-l">
+        {/* Carrito */}
+        <div className="cart-icon">
+          <Link 
+            to="/cart" 
+            className="cart-icon" 
+            onClick={() => setOpenMenu(false)}
+          >
+            <FaCartPlus size={24} />
+          </Link>
+          {totalItems > 0 && (
+            <span className="cart-count">{totalItems}</span>
+          )}
+        </div>
 
-                        <Link onClick={handleLogout} className="btn-logout">
-                            Salir
-                        </Link>
-                        <span className="user-name">Hola, {email || "Usuario"}</span>
-                    </div>
-                )}
-            </div>
-        </nav>
-    );
+        {/* Login / Logout */}
+        {!isAuthenticated ? (
+          <Link 
+            to="/login" 
+            className="login-link" 
+            onClick={() => setOpenMenu(false)}
+          >
+            Login
+          </Link>
+        ) : (
+          <div className="user-info">
+            <span className="user-name">Hola, {email}</span>
+            <button className="btn-logout" onClick={handleLogout}>
+              Salir
+            </button>
+          </div>
+        )}
+
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
