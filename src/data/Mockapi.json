@@ -126,3 +126,39 @@
     "active": true
   }
 ]
+
+category =
+[
+  {
+    "id": "1",
+    "name": "Acrílico sobre lienzo"
+  },
+  {
+    "id": 2,
+    "name": "Óleo sobre tabla"
+  },
+  {
+    "id": 3,
+    "name": "Óleo sobre lienzo"
+  },
+  {
+    "id": 4,
+    "name": "Técnica mixta"
+  },
+  {
+    "id": 5,
+    "name": "Acuarela"
+  },
+  {
+    "id": 6,
+    "name": "Digital"
+  },
+  {
+    "id": 7,
+    "name": "Serigrafía"
+  },
+  {
+    "id": 8,
+    "name": " Dibujo a lápiz"
+  }
+]

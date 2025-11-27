@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useCategories } from '../context/CategoryContext'
 
 
 
@@ -12,6 +13,13 @@ const Home = () =>
 {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    // Buscador 27-11//
+    const [search, setSearch] = useState("");
+
+    // Filtro categoría
+    const { categories } = useCategories();
+    const [categoryFilter, setCategoryFilter] = useState("");
 
     /** Modal State */
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -25,7 +33,35 @@ const Home = () =>
     const [startIndex, setStartIndex] = useState(0);
     const itemsPerPage = 4;
 
-    const visibleProducts = products.slice(startIndex, startIndex + itemsPerPage);
+    // logica para la busqueda de productos //
+
+        useEffect(() => {
+        fetchProducts()
+            .then((data) => {
+                // FILTRO: solo active = true
+                const filtered = data.filter((p) => p.active !== false);
+                setProducts(filtered);
+                setLoading(false);
+            });
+    }, []);
+
+    // 🔍 FILTRO combinado (search + categoría)
+    const filteredProducts = products.filter((p) => {
+        const matchesSearch =
+            p.title.toLowerCase().includes(search.toLowerCase()) ||
+            p.autor.toLowerCase().includes(search.toLowerCase()) ||
+            p.description.toLowerCase().includes(search.toLowerCase());
+
+        const matchesCategory =
+            categoryFilter === "" || p.categoryId === categoryFilter;
+
+        return matchesSearch && matchesCategory;
+    });
+
+
+
+
+    const visibleProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
     const next = () =>
     {
@@ -92,7 +128,37 @@ const Home = () =>
 
     return (
         <div className="home">
+            <div className="filters-container">
             <h1>Obras destacadas</h1>
+
+            {/* BUSCADOR */}
+            <input
+                type="text"
+                placeholder="Buscar por título, autor o descripción..."
+                value={search}
+                onChange={(e) => {
+                    setStartIndex(0);
+                    setSearch(e.target.value);
+                }}
+                className="search-input"
+            />
+
+            {/* SELECT CATEGORÍAS */}
+            <select
+                className="search-input"
+                value={categoryFilter}
+                onChange={(e) => {
+                    setStartIndex(0);
+                    setCategoryFilter(e.target.value);
+                }}
+            >
+                <option value="">Todas las categorías</option>
+                {categories.map((c) => (
+                    <option key={c.id} value={c.id}>{c.name}</option>
+                ))}
+            </select>
+
+            </div>
             <div className="products-grid">
                 {visibleProducts.map((product) => (
                     <ProductCard
@@ -107,7 +173,7 @@ const Home = () =>
             </div>
 
             {/* Modal */}
-<Modal
+            <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 contentLabel="Producto Detalles"
