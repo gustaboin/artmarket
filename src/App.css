@@ -18,7 +18,7 @@ body {
 }
 
 /* Navbar */
-/* NAVBAR GENERAL */
+
 nav {
   background-color: #82bad5;
   padding: 1rem 2rem;
@@ -84,7 +84,7 @@ nav .links a:hover {
   gap: 10px;
 }
 
-/* HAMBURGER */
+/* BURGER */
 .burger {
   display: none;
   flex-direction: column;
@@ -277,10 +277,14 @@ footer p a {
 
 /* Home page / product grid */
 .home {
-  padding: 2rem;
+  padding: 2rem ;
   padding-top: 0;
+  padding-bottom: 0;
   width: 80%;
   margin: auto;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .home h1 {
@@ -294,6 +298,7 @@ footer p a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  width: 100%;
 }
 
 /* Product Card */
@@ -573,14 +578,14 @@ footer p a {
   align-items: center;
   gap: 1rem;
   margin: 20px auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .search-input {
   width: 100%;
-  max-width: 350px;
-  padding: 10px 12px;
-  margin: 10px 0 20px 0;
+  max-width: 200px;
+  padding: 6px 12px;
+  margin: 2px 0 4px 0;
   border: 2px solid #3a86ff;
   border-radius: 8px;
   font-size: 1rem;
@@ -593,6 +598,9 @@ footer p a {
   box-shadow: 0 0 4px rgba(131, 56, 236, 0.4);
 }
 
+.filters-container h1 {
+  white-space: nowrap;
+}
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -608,7 +616,7 @@ footer p a {
 
   .search-input, .search-select {
   width: 100%;
-  max-width: 350px;
+  max-width: 200px;
   padding: 5px 6px;
   margin: 1px 0 2px 0;
   }

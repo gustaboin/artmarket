@@ -45,19 +45,32 @@
   box-sizing: border-box;
 }
 
-/* Inputs que deben ser más anchos ocupan dos columnas */
-.form-grid input[name="description"],
-.form-grid input[name="dimension"],
-.form-grid input[name="format"],
-.form-grid input[name="rating"],
-.form-grid select[name="categoryId"] {
-  grid-column: span 2;
+/* Inputs que deben ser más anchos */
+.form-grid input[name="description"] {
+  grid-column: span 3;
 }
+
+.form-grid textarea {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-height: 80px; /* Altura mínima para que se vea bien */
+    resize: vertical;
+}
+
+.form-grid label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0a3d62; /* Color de tu tema */
+    margin-bottom: 2px;
+}
+
 
 .btn-primary {
   grid-column: span 4;
   padding: 10px;
-  background: #0a3d62;
+  background: #218137;
   color: white;
   border: none;
   border-radius: 6px;
@@ -67,7 +80,15 @@
 }
 
 .btn-primary:hover {
-  background: #07415a;
+  background: #28a745;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-grid {
+    display: flow-root;
+  }
+  
 }
 
 /* ======= PRODUCT LIST ======= */

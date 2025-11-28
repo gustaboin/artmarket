@@ -31,6 +31,12 @@ console.log("product encontrado:", products.find((p) => p.id === id));
   return (
     <div className="dashboard-container">
      <div className="card">
+                      <div className="info-header">
+                    <h2>Editar Artículo:<a style={{color:"#3498db"}}> {product.title} </a></h2>
+                    <button className="btn btn-secondary" style={{backgroundColor:"#0a3d62", color:"white"}} onClick={() => navigate('/dashboard')}>
+                        Volver
+                    </button>
+                </div>
     <ProductForm
       mode="edit"
       initialData={product}

@@ -71,7 +71,7 @@ const ProductDetail = () =>
                 <p><strong>Dimensiones:</strong> {product.dimension}</p>
 
                 <p><strong>Precio:</strong> u$s {product.price}</p>
-                <button onClick={() => addToCart(product)}>Agregar al carrito</button>
+                <button style={{backgroundColor: "#218137"}} onClick={() => addToCart(product)}>Agregar al carrito</button>
             </div>
         </div>
     );

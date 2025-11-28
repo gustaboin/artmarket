@@ -203,7 +203,7 @@ const Home = () =>
                             <button className="btn btn-success" onClick={addFromModal}>
                                 Agregar al carrito
                             </button>
-                            <button className="btn btn-primary" onClick={() => goToProductDetail()}>
+                            <button className="btn btn-secondary" onClick={() => goToProductDetail()}>
                                 Detalles
                             </button>
                             <button className='btn btn-danger' onClick={closeModal}>Cerrar</button>

@@ -59,8 +59,12 @@ export default function ProductForm({
 
   return (
     <form onSubmit={handleSubmit} className="form-grid">
+
+ {/* --Agrego LABELS ya que en modo edicion no se sabe que estamos editando  */}
       <div>
+        {mode === "edit" && <label htmlFor="title">Título</label>}
         <input
+          id="title"
           name="title"
           placeholder="Título"
           value={form.title}
@@ -68,9 +72,10 @@ export default function ProductForm({
         />
         {errors.title && <p className="error">{errors.title}</p>}
       </div>
-
       <div>
+        {mode === "edit" && <label htmlFor="autor">Autor</label>}
         <input
+          id="autor"
           name="autor"
           placeholder="Autor"
           value={form.autor}
@@ -78,9 +83,10 @@ export default function ProductForm({
         />
         {errors.autor && <p className="error">{errors.autor}</p>}
       </div>
-
       <div>
+        {mode === "edit" && <label htmlFor="imageUrl">URL Imagen</label>}
         <input
+          id="imageUrl"
           name="imageUrl"
           placeholder="URL Imagen"
           value={form.imageUrl}
@@ -88,9 +94,10 @@ export default function ProductForm({
         />
         {errors.imageUrl && <p className="error">{errors.imageUrl}</p>}
       </div>
-
       <div>
+        {mode === "edit" && <label htmlFor="price">Precio</label>}
         <input
+          id="price"
           name="price"
           type="number"
           placeholder="Precio"
@@ -99,9 +106,10 @@ export default function ProductForm({
         />
         {errors.price && <p className="error">{errors.price}</p>}
       </div>
-
       <div>
+        {mode === "edit" && <label htmlFor="stock">Stock</label>}
         <input
+          id="stock"
           name="stock"
           type="number"
           placeholder="Stock"
@@ -110,39 +118,63 @@ export default function ProductForm({
         />
         {errors.stock && <p className="error">{errors.stock}</p>}
       </div>
-
-      <input
-        name="description"
-        placeholder="Descripción"
-        value={form.description}
-        onChange={handleChange}
-      />
-      <input
-        name="dimension"
-        placeholder="Dimensión"
-        value={form.dimension}
-        onChange={handleChange}
-      />
-      <input
-        name="format"
-        placeholder="Formato"
-        value={form.format}
-        onChange={handleChange}
-      />
-      <select name="categoryId" value={form.categoryId} onChange={handleChange}>
-        <option value="">Seleccionar categoría</option>
-        {categories.map((c) => (
-          <option key={c.id} value={c.id}>
-            {c.name}
-          </option>
-        ))}
-      </select>
-      <input
-        name="rating"
-        placeholder="Rating"
-        value={form.rating}
-        onChange={handleChange}
-      />
+      <div>
+        {mode === "edit" && <label htmlFor="dimension">Dimensión</label>}
+        <input
+          id="dimension"
+          name="dimension"
+          placeholder="Dimensión"
+          value={form.dimension}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        {mode === "edit" && <label htmlFor="format">Formato</label>}
+        <input
+          id="format"
+          name="format"
+          placeholder="Formato"
+          value={form.format}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        {mode === "edit" && <label htmlFor="rating">Rating</label>}
+        <input
+          id="rating"
+          name="rating"
+          placeholder="Rating"
+          value={form.rating}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        {mode === "edit" && <label htmlFor="categoryId">Categoría</label>}
+        <select 
+            id="categoryId"
+            name="categoryId" 
+            value={form.categoryId} 
+            onChange={handleChange}
+        >
+          <option value="">Seleccionar categoría</option>
+          {categories.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div >
+        {mode === "edit" && <label htmlFor="description">Descripción</label>}
+        <textarea
+            id="description"
+            name="description"
+            placeholder="descripción"
+            value={form.description}
+            onChange={handleChange}
+            rows="3" 
+        />
+      </div>
 
       <button className="btn-primary" type="submit">
         {mode === "edit" ? "Guardar cambios" : "Crear"}
